@@ -1,0 +1,22 @@
+SQL-S1-ESERCIZIO GIORNO 1
+
+-ESERCIZIO 1
+SELECT nome,cognome FROM clienti WHERE data_nascita=1982
+
+-ESERCIZIO 2
+SELECT numero_fattura FROM fatture WHERE iva=20
+
+-ESERCIZIO3
+SELECT EXTRACT(year FROM data_fattura) AS anno_fatturazione, COUNT(numero_fattura) AS numero_fattura,
+SUM(importo)  FROM fatture GROUP BY anno_fatturazione;
+
+-ESERCIZIO 4
+SELECT * FROM prodotti WHERE EXTRACT(year FROM data_attivazione) = '2017' AND in_produzione = 'true' OR in_commercio = 'true'
+
+-ESERCIZIO 5
+SELECT EXTRACT(year FROM data_fattura) FROM fatture WHERE tipologia = 'elettronica < 2';
+
+-ESERCIZIO 6
+SELECT lista_fatture.numero_fattura, lista_fatture.importo, lista_fatture.iva,lista_fatture.data_fattura, lista_fornitori.denominazione
+FROM fatture AS lista_fatture
+INNER JOIN fornitori AS lista_fornitori ON lista_fatture.numero_fornitore = lista_fornitori.numero_fornitore;
